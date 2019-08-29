@@ -1,0 +1,207 @@
+###############################
+#     Cryptic Development     #
+#           Shards            #
+#          by xCodiq          #
+###############################
+
+# Supports YAML or MySQL
+database:
+  type: YAML
+# Uncomment when using MySQL
+#  host: "localhost"
+#  port: 3306
+#  username: "root"
+#  password: "password"
+#  database: "shards"
+#  pool-size: 10
+
+messages:
+
+  add-wrong-args: "&2&l[!!] &2/shards add <player> <shards>"
+  reset-wrong-args: "&2&l[!!] &2/shards reset <player>"
+  remove-wrong-args: "&2&l[!!] &2/shards remove <player> <shards>"
+  set-wrong-args: "&2&l[!!] &2/shards set <player> <shards>"
+  give-wrong-args: "&2&l[!!] &2/shards give <player> <shards>"
+  config-reloaded: "&2&l[!!] &2Successfully reloaded all config files (took %ping%ms)"
+  no-permission: "&c&l[!!] &cInsufficient permission! &8(&n%command%&8)"
+  wrong-arguments: "&c&l[!!] &cWrong arguments, type /%command% help"
+  player-not-online: "&c&l[!!] &cThat player is currently not online!"
+  no-valid-number: "&c&l[!!] &c&n%number%&c isn't a valid number"
+  reset-success: "&2&l[!!] &2Successfully reset shards of %player%"
+  set-success: "&2&l[!!] &2Successfully set shards of %player% to %shards%"
+  add-success: "&2&l[!!] &2Successfully added %shards% shards to %player%"
+  remove-success: "&2&l[!!] &2Successfully removed %shards% shards from %player%"
+  give-success: "&2&l[!!] &2You have given %shards% shards from %player%"
+  balance: "&2&l[!!] &2You currently have: &f&n%shards% shards"
+  balance-other: "&2&l[!!] &2%player% currently has: &f&n%shards% shards"
+  cant-pay-yourself: "&c&l[!!] &cYou cant pay yourself"
+  not-enough-shards: "&c&l[!!] &cYou don't have enough shards to pay"
+  target-not-enough-shards: "&c&l[!!] &c%player% doesn't have enough shards to remove"
+  given-shards: "&2&l[!!] &2You have given %shards% shards to %player%"
+  received-shards: "&2&l[!!] &2You have received %shards% shards from %player%"
+  let-player-open: "&2&l[!!] &2You let %player% open the ShardGUI"
+  not-enough-to-deposit: "&c&l[!!] &cYou don't have enough shards to deposit"
+  deposit-success: "&2&l[!!] &2Successfully deposited %shards% shards"
+  cant-deposit: "&c&l[!!] &cYou can't deposit %shards% shards"
+  not-enough-to-withdraw: "&c&l[!!] &cYou don't have enough shards to withdraw"
+  withdraw-success: "&2&l[!!] &2Successfully withdrawn %shards% shards"
+  cant-withdraw: "&c&l[!!] &cYou can't withdraw %shards% shards"
+  not-enough-inventory-space-to-withdraw: "&c&l[!!] &cYou don't have enough inventory space to withdraw any shards"
+  cancel-conversation: "&c&l[!!] &cCancelled current shards session!"
+  drop-confirm: "&c&l[!!] &cDrop again within &n3 seconds&c to drop your shards!"
+
+  # Messages sent when a player executes /shards help
+  shards-help:
+    - "&8&l&m-+---------------------+-"
+    - " &2&l[!!] &2Shards Help"
+    - " "
+    - "  &a&l* &2&l/shards shop"
+    - "  &a&l* &2&l/shards withdraw"
+    - "  &a&l* &2&l/shards deposit"
+    - "  &a&l* &2&l/shards balance"
+    - "  &a&l* &2&l/shards pay"
+    - "  &a&l* &2&l/shards top"
+    - " "
+    - "&8&l&m-+---------------------+-"
+
+
+  # Messages sent whe na player executes /shards withdraw or clicks the withdraw item in the ShardGUI
+  #10
+  # > Placeholders:
+  #   - %player% = The player who executed /shards withdraw or clicked the item
+  #   - %shards% = The mount of shards the player has
+  #
+  shards-withdraw:
+    - " "
+    - "&2&l[!!] &2Follow the steps to withdraw shards!"
+    - " "
+    - "&2&l> &2You currently have: &f%shards% shards"
+    - "&2&l> &2Miss click? Type &2'&ccancel&2' &2to cancel your withdraw"
+    - " "
+    - "   &c&oMake sure you have enough inventory space,"
+    - "        &c&oshards will be lost otherwise!"
+    - " "
+    - "&7&o(( Type an Amount you would like to Withdraw ))"
+    - " "
+
+
+  # Messages sent whe na player executes /shards deposit or clicks the deposit item in the ShardGUI
+  #
+  # > Placeholders:
+  #   - %player% = The player who executed /shards deposit or clicked the item
+  #   - %shards% = The mount of shards the player has
+  #
+  shards-deposit:
+    - " "
+    - "&2&l[!!] &2Follow the steps to deposit shards!"
+    - " "
+    - "&2&l> &2You currently have: &f%shards% shards"
+    - "&2&l> &2Miss click? Type &2'&ccancel&2' &2to cancel your deposit"
+    - " "
+    - "&7&o(( Type an Amount you would like to Deposit ))"
+    - " "
+
+shardgui: #Shards GUI
+
+  # Should the GUI be opened when executing /shards without arguments. Set to true for instant opening
+  open-on-command: false
+
+  # Title of the GUI
+  title: "&2&l[!!] &2Shards..."
+
+  #How big should the GUI be. Each row has 9 slots, set the size at minimum to 9
+  size: 27
+
+  # Glass item which will be used as filling item, slots can be set in glass-slots
+  glass-item:
+    slots: "0,1,2,3,4,5,6,7,8,9,17,18,19,20,22,21,23,24,25,26"
+    material: STAINED_GLASS_PANE
+    data: 5
+    item:
+      displayname: "&2&lCryptic-Shards"
+      lore:
+        - "&aHover an item for more information!"
+
+  # Balance item which shows your shards amount
+  balance-item:
+    slot: 13
+    material: PRISMARINE_SHARD
+    item:
+      displayname: "&2&l[!!] &2Shards account of &n%player%"
+      lore:
+        - " "
+        - "  &7This is where your shards are stored"
+        - " &7type /shard balance to view your shards"
+        - " "
+        - " &2&l[!] &2Your account"
+        - "  &a&l* &2Owned: &f%shards% shards"
+        - " "
+        - " &7(( &fClick &7to open the Shard Shop &7))"
+        - " "
+
+  #Withdraw item in the main ShardGUI
+  withdraw-item:
+    slot: 11
+    material: WOOL
+    data: 5
+    item:
+      displayname: "&a&l[!!] &aWithdraw shards"
+      lore:
+        - " "
+        - " &7Click and type the amount of "
+        - "  &7shards you want to withdraw "
+        - " "
+        - " &a&l[!] &aInformation"
+        - "  &2&l* &c&nWithdraw is cancellable&c!"
+        - " "
+        - " &7(( &fClick &7to withdraw shards &7))"
+        - " "
+
+  #Deposit item in the main ShardGUI
+  deposit-item:
+    slot: 15
+    material: WOOL
+    data: 14
+    item:
+      displayname: "&c&l[!!] &cDeposit shards"
+      lore:
+        - " "
+        - " &7Click and type the amount of "
+        - "  &7shards you want to deposit "
+        - " "
+        - " &c&l[!] &cInformation"
+        - "  &4&l* &c&nDeposit is cancellable&c!"
+        - " "
+        - " &7(( &fClick &7to deposit shards &7))"
+        - " "
+
+#GUI which shows up by doing /shards top
+leaderboard:
+
+  #Text shown when leaderboard-type is set to text
+  text-top:
+    header:
+      - " "
+      - "&8&l&m---------------------------"
+      - " &2&l[!!] Top 10 Shards"
+      - " "
+    content: "   &a&l* &f#%place% &2&l%player% &7%shards_formatted%"
+    footer:
+      - " "
+      - "&8&l&m---------------------------"
+      - " "
+
+#The shard item you get physically
+shard:
+  material: PRISMARINE_SHARD
+  item:
+    displayname: "&8+ &2&lCryptic Shard &8+"
+    lore:
+      - " "
+      - "&7&o Shards can be used to trade special"
+      - "       &7&oitems by doing /shard shop"
+      - " "
+      - " &2&l[!!] &2Information"
+      - "  &a&l* &2Active drop protection"
+      - "  &a&l* &c&nOne use only&c!"
+      - " "

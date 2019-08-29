@@ -1,0 +1,63 @@
+name: Cryptic-Shards
+version: ${project.version}
+main: me.xcodiq.crypticshards.Core
+authors: [xCodiq, OutbackAustralia]
+softdepend: [PlaceholderAPI]
+description: Use Cryptic-Shards for a whole new Economy
+website: xcodiq.portfoliobox.net
+
+permissions:
+  crypticshards.admin:
+    description: Give access to everything
+    default: op
+    children:
+      crypticshards.command.*: true
+  crypticshards.command.*:
+    crypticshards.command.add: true
+    crypticshards.command.give: true
+    crypticshards.command.reload: true
+    crypticshards.command.remove: true
+    crypticshards.command.reset: true
+    crypticshards.command.set: true
+    crypticshards.command.balance: true
+    crypticshards.command.deposit: true
+    crypticshards.command.help: true
+    crypticshards.command.opengui: true
+    crypticshards.command.opengui.other: true
+    crypticshards.command.balance.other: true
+    crypticshards.command.pay: true
+    crypticshards.command.shop: true
+    crypticshards.command.top: true
+    crypticshards.command.withdraw: true
+  crypticshards.command.add:
+    default: op
+  crypticshards.command.give:
+    default: op
+  crypticshards.command.reload:
+    default: op
+  crypticshards.command.remove:
+    default: op
+  crypticshards.command.reset:
+    default: op
+  crypticshards.command.set:
+    default: op
+  crypticshards.command.balance:
+    default: op
+  crypticshards.command.deposit:
+    default: op
+  crypticshards.command.help:
+    default: op
+  crypticshards.command.opengui:
+    default: op
+  crypticshards.command.opengui.other:
+    default: op
+  crypticshards.command.balance.other:
+    default: op
+  crypticshards.command.pay:
+    default: op
+  crypticshards.command.shop:
+    default: op
+  crypticshards.command.top:
+    default: op
+  crypticshards.command.withdraw:
+    default: op

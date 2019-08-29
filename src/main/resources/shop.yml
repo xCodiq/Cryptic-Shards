@@ -1,0 +1,81 @@
+################################
+#       SHARDS SHOP CONFIG     #
+#         By xCodiq            #
+################################
+gui:
+  title: "&2&l[!!] &2Shard shop..."
+  size: 9
+  glass-item: #Glass filling item
+    slots: '0,8' #The glass slots
+    material: STAINED_GLASS_PANE
+    data: 5
+    item:
+      displayname: "&2&lShards Shop"
+      lore:
+        - "&aHover an item for more information!"
+  deny-item: #Item shown when someone can't buy an item from the ShardShop
+    material: BARRIER
+    item:
+      displayname: "&8+ &4&lIm sorry... &8+"
+      lore:
+        - "&cBut you can't purchase this item!"
+  inventory:
+    item1: #Each item must have a unique name, I suggest using item# -> # = a number counting up
+      slot: 1 #The slot the item will be on
+      material: CHEST #Material used
+      amount: 1 #The amount of the item
+      data: 0 #Data for the item, for example to get coloured wool
+      enchanted: false #Enchanted item?
+      item: #Item shown in the GUI
+        displayname: "&2&l[!!] &2Cool Chest"
+        lore:
+          - " "
+          - " &7This chest can be used for actually nothing"
+          - "       &7and can be thrown away in lava!"
+          - " "
+          - " &2&l[!] &2Requirements"
+          - " &a&l* &2Shards needed: &f100"
+          - " "
+          - " &7(( &fClick &7to purchase this item ))"
+          - " "
+      requirements: #All requirements a player must have to buy it
+        shards: 100 #Shards they need
+        vault-economy: 0 #Normal Vault money they need
+        permission: #Does the player need a permission to buy this item. This can be used to let certain ranks buy it. Just give the group the given permission!
+          enabled: false #Set to true to enable
+          permission-needed: "custompermission.to.buy" #The permission they need
+      commands-on-purchase-console: #All commands executed by console on purchase -> without slash!!!!!!
+        - "give %player% chest 1 name:&2&lCool_Chest"
+      commands-on-purchase-player: #All commands executed by the player on purchase -> without slash!!!!!!
+        - "say I have bought an item!"
+
+    #Example without all comments
+    item2:
+      slot: 2
+      material: DIAMOND_BLOCK
+      amount: 1
+      data: 0
+      enchanted: true
+      item:
+        displayname: "&3&l[!!] &3Cool Diamond Block"
+        lore:
+          - " "
+          - " &7This block can be used for actually nothing"
+          - "       &7and can be thrown away in lava!"
+          - " "
+          - " &3&l[!] &3Requirements"
+          - " &b&l* &3Shards needed: &f199"
+          - " &b&l* &3Money needed: &2$&a10.00k"
+          - " "
+          - " &7(( &fClick &7to purchase this item ))"
+          - " "
+      requirements:
+        shards: 199
+        vault-economy: 10000
+        permission:
+          enabled: false
+          permission-needed: "custompermission.to.buy"
+      commands-on-purchase-console:
+        - "give %player% diamondblock 1 name:&3&lCool_Diamond_Block"
+      commands-on-purchase-player:
+        - "say I have bought an item!"
